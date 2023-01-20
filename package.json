@@ -1,0 +1,57 @@
+{
+  "name": "lafeview",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "author": "oein",
+  "description": "Laftel Viewer",
+  "devDependencies": {
+    "axios": "^1.2.3",
+    "electron": "^22.0.3",
+    "electron-prompt": "^1.7.0",
+    "electron-builder": "^23.6.0"
+  },
+  "scripts": {
+    "build:ma": "electron-builder --mac --arm64",
+    "build:mx": "electron-builder --mac --x64",
+    "build:wx": "electron-builder --win --x64"
+  },
+  "build": {
+    "productName": "LafeView",
+    "appId": "com.oein.lafeview",
+    "asar": true,
+    "protocols": {
+      "name": "lafeView",
+      "schemes": [
+        "lafeView"
+      ]
+    },
+    "win": {
+      "target": [
+        "zip",
+        "nsis"
+      ],
+      "icon": "./install/icon.ico"
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true,
+      "installerIcon": "./install/icon.ico"
+    },
+    "directories": {
+      "buildResources": "./resources/installer/",
+      "output": "./dist/",
+      "app": "."
+    },
+    "mac": {
+      "target": [
+        "dmg"
+      ],
+      "icon": "./install/icon.ico"
+    },
+    "dmg": {
+      "title": "LafeView",
+      "icon": "./install/icon.ico"
+    }
+  }
+}
